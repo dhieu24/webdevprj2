@@ -21,7 +21,6 @@ import toastr from 'toastr';
 import { Checkbox } from "@mui/material";
 //master export
 export default class page extends Component {
-    //constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +35,6 @@ export default class page extends Component {
         };
     }
 
-    //add task
     addTask() {
         this.setState({type: "add"})
         this.setState({index: -1})
@@ -49,13 +47,12 @@ export default class page extends Component {
         this.setState({index: index});
     }
 
-    //callback from dialog input
-    dialogCallback = (data) => {//functional syntax intentional
-        if (data.action === `submit`) {//submitted
+    dialogCallback = (data) => {
+        if (data.action === `submit`) {
             toastr.success(`Task has been successfully added!`, ``, { 'closeButton': true, positionClass: 'toast-bottom-right' });
             this.setState({ rows: [...this.state.rows, data.data] });
             this.setState({ open: false });
-        } else if (data.action === `cancel`) {//cancelled
+        } else if (data.action === `cancel`) {
             this.setState({ open: false });
         } else if (data.action === 'edit') {
             this.editRow(data)
@@ -76,7 +73,6 @@ export default class page extends Component {
         this.setState({rows: newRow})
     }
 
-    //render
     render() {
         return (
             <>
@@ -94,19 +90,16 @@ export default class page extends Component {
                 </DiaWrap>
                 {/*master card*/}
                 <Card sx={{ margin: '20px' }}>
-                    {/*card header*/}
                     <CardHeader sx={{ bgcolor: 'primary.dark', color: 'white' }}
                         title={<><small><i className='fa fa-fw fa-bars'></i>FRAMEWORKS</small></>}
                         style={{ textAlign: 'center' }}
                         action={
                             <>
-                                {/*button*/}
                                 <Button variant="contained" onClick={() => this.addTask()} sx={{ width: 100, marginRight: '7px' }}>
                                     <i className="fa fa-fw fa-plus-circle"></i>Add
                                 </Button>
                             </>
                         } />
-                    {/*card content*/}
                     <CardContent sx={{ bgcolor: 'white', marginBottom: -1 }}>
                         <TableContainer>
                             <Table sx={{ bgcolor: 'white' }}>

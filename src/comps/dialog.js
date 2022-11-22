@@ -94,16 +94,13 @@ export default function ResponsiveDialog(props) {
         return ""
     }
 
-    //return master object
     return (
         <>
-            {/*title*/}
             {type === "add" ? <DialogTitle sx={{ bgcolor: 'primary.dark', color: 'white' }}>
                 <i className="fa fa-fw fa-plus-circle"></i>Add Task
             </DialogTitle> : <DialogTitle sx={{ bgcolor: 'primary.dark', color: 'white' }}>
-                <i className="fa fa-fw fa-edit-circle"></i>Edit Task
+                <i className="fa fa-fw fa-edit"></i>Edit Task
             </DialogTitle>}
-            {/*content*/}
             <DialogContent>
                 <br /><br />
                 {type === "add" ? 
@@ -120,7 +117,7 @@ export default function ResponsiveDialog(props) {
                 <br /><br /><br />
 
                 <TextField
-                    error={type === "add" ? (description === "" || description === null) : false}
+                    error={(description === "" || description === null)}
                     id="description"
                     label="Description"
                     fullWidth
@@ -129,7 +126,6 @@ export default function ResponsiveDialog(props) {
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
-                {/*deadline*/}
                 <br /><br /><br />
                 <DateTime dataFromParent={deadline} dataToParent={setDeadLine} />
 
@@ -150,13 +146,11 @@ export default function ResponsiveDialog(props) {
                 </FormControl>
 
             </DialogContent>
-            {/*action buttons*/}
             <DialogActions sx={{ bgcolor: 'white' }}>
-                {/*cancel button*/}
                 {type === 'add' ? <Button onClick={submitAfterAdd} variant="contained" sx={{ width: 100, marginRight: '7px'}}>
                     <i className="fa fa-fw fa-plus-circle"></i>Add
                 </Button> : <Button onClick={submitEdit} variant="contained" sx={{ width: 100, marginRight: '7px'}}>
-                    <i className="fa fa-fw fa-edit-circle"></i>Edit
+                    <i className="fa fa-fw fa-edit"></i>Edit
                 </Button>}
 
                 <Button onClick={cancel} variant="contained" color='error' sx={{ bgcolor: '#f44336', width: 100 }}>
